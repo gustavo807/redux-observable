@@ -12,6 +12,8 @@
   },
   "private": true,
   "dependencies": {
+    "@angular-redux/router": "^7.0.0",
+    "@angular-redux/store": "^7.1.1",
     "@angular/animations": "^5.2.0",
     "@angular/common": "^5.2.0",
     "@angular/compiler": "^5.2.0",
@@ -21,8 +23,19 @@
     "@angular/platform-browser": "^5.2.0",
     "@angular/platform-browser-dynamic": "^5.2.0",
     "@angular/router": "^5.2.0",
+    "actions-creator-factory": "^0.1.1",
+    "angular-feather": "^5.3.0",
+    "angular2-notifications": "^0.9.7",
+    "bootstrap": "^4.0.0-beta.3",
     "core-js": "^2.4.1",
+    "feather-icons": "^4.7.0",
+    "ng-redux": "^4.0.3",
+    "redux": "^3.7.2",
+    "redux-observable": "^0.14.1",
+    "redux-observable-decorator": "^1.1.0",
     "rxjs": "^5.5.6",
+    "typescript-fsa": "^2.5.0",
+    "typescript-fsa-reducers": "^0.4.5",
     "zone.js": "^0.8.19"
   },
   "devDependencies": {

@@ -1,0 +1,65 @@
+<simple-notifications [options]="options"></simple-notifications>
+<div class="container">
+
+  <h3>User list</h3>
+
+  <form #f="ngForm">
+    <div class="form-group">
+      <label for="firstname">Firstname: </label>
+      <input type="text" class="form-control" name="firstname" [(ngModel)]="item.firstname" required #firstname="ngModel">
+      <div [hidden]="firstname.valid">
+        *Firstname is required
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="lastname">Lastname: </label>
+      <input type="text" class="form-control" name="lastname" [(ngModel)]="item.lastname" required #lastname="ngModel">
+      <div [hidden]="lastname.valid">
+        *Lastname is required
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="email">Email: </label>
+      <input type="text" class="form-control" id="email" name="email" [(ngModel)]="item.email" required #email="ngModel" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$">
+      <div [hidden]="email.valid">
+        *Email is required
+      </div>
+      <div *ngIf="email.errors">
+        *Email invalid 
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary" (click)="onSubmit()" [disabled]="!f.valid">Submit</button>
+    <button type="submit" class="btn btn-danger" [hidden]="!isEdit" (click)="cancelEdit()">Cancel</button>
+  </form>
+
+  <hr>
+
+  <div class="form-group">
+    <input type="text" class="form-control" [(ngModel)]="search" placeholder="Search user">
+  </div>
+
+  <table class="table">
+    <thead>
+      <th>Id</th>
+      <th>Firstname</th>
+      <th>Lastname</th>
+      <th>Email</th>
+      <th>CreatedAt</th>
+      <th>Action</th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users | searchUser: search ">
+        <td>{{user.id}}</td>
+        <td>{{user.firstname}}</td>
+        <td>{{user.lastname}}</td>
+        <td>{{user.email}}</td>
+        <td>{{user.createdAt | date:'fullDate'}}</td>
+        <td>
+          <a (click)="isEditUser(user)"><i-edit></i-edit></a>
+          <a (click)="deleteUser(user)"><i-delete></i-delete></a>          
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
